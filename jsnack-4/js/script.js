@@ -1,22 +1,36 @@
 // Snack 4
 // Inserisci un numero, se è pari stampa il numero, se è dispari stampa il numero successivo.
 
+let repeat;
+// eseguo il programma di continuo finché l'utente non inserisce "-1" per interrompere il programma
 
-// chiedo all'utente di inserire un numero
-let userNumber;
+while(repeat != "n") {
 
-do{
+    // chiedo all'utente di inserire un numero
+    let userNumber;
 
-    userNumber = prompt("Inserisci un numero");
+    do{
 
-    if(userNumber < 0 || isNaN(userNumber)) {
-        alert("Valore inserito non corretto, riprova");
+        userNumber = prompt("Inserisci un numero");
+
+        if(userNumber < 0 || isNaN(userNumber)) {
+            alert("Valore inserito non corretto, riprova");
+        }
+
+    } while(userNumber < 0 || isNaN(userNumber));
+
+    if(Number(userNumber) % 2 != 0) {
+        alert(`Numero inserito (${userNumber}) dispari, quindi stampo il numero: ${Number(userNumber) + 1}`);
+    } else {
+        alert(`Il numero inserito è ${userNumber} ed è pari`);
     }
 
-} while(userNumber < 0 || isNaN(userNumber));
+    do{
 
-if(Number(userNumber) % 2 != 0) {
-    document.getElementById("result").innerHTML = `Numero inserito (${userNumber}) dispari, quindi stampo il numero: ${Number(userNumber) + 1}`;
-} else {
-    document.getElementById("result").innerHTML = `Il numero inserito è ${userNumber} ed è pari`;
+        repeat = prompt("Vuoi continuare? (per uscire inserisci 'n', per continuare inserisci 's')");
+
+    }while(repeat != "n" && repeat != "s");
+
 }
+
+document.getElementById("result").innerHTML = `Fine programma! <br> Hai inserito ${repeat}`;
